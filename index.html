@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program Referral By Zen</title>
+    <title>Syarat & Ketentuan Rent By Zen</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,16 +14,16 @@
             color: #e0e0e0;
             font-family: 'Roboto', sans-serif;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
+            height: auto;
             min-height: 100vh;
             padding: 2rem 1rem;
             position: relative;
-            overflow-y: auto;
+            overflow-x: hidden;
         }
 
-        /* --- Background Animation --- */
+        /* --- Animasi Latar Belakang & Efek --- */
         .pixel-grid {
             position: fixed;
             top: 0;
@@ -41,6 +41,7 @@
             to { background-position: 25px 25px; }
         }
 
+        /* Scanline Effect */
         body::before {
             content: '';
             position: fixed;
@@ -59,59 +60,12 @@
             );
         }
 
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -4;
-            pointer-events: none;
-        }
-
-        .star {
-            position: absolute;
-            background-color: #ffffff;
-            opacity: 0;
-            animation: starFall 5s linear infinite;
-        }
-
-        @keyframes starFall {
-            0% { transform: translateY(-100vh) scale(0); opacity: 0; }
-            5% { transform: translateY(-95vh) scale(1); opacity: 1; }
-            100% { transform: translateY(100vh) scale(0); opacity: 0; }
-        }
-
-        .sparkle-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-        .sparkle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background-color: #00ffff;
-            opacity: 0;
-            border-radius: 50%;
-            animation: sparkle-blink 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes sparkle-blink {
-            0% { opacity: 0; transform: scale(0.5); }
-            50% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0; transform: scale(0.5); }
-        }
-
+        /* --- Animasi Teks & Tombol --- */
         .text-neon {
             text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
             animation: pulsateNeon 1.5s infinite ease-in-out alternate;
         }
-
+        
         @keyframes pulsateNeon {
             from {
                 text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
@@ -121,55 +75,6 @@
             }
         }
         
-        /* Removed .card-container styling */
-        .table-container {
-            width: 100%;
-            background-color: rgba(36, 36, 66, 0.5);
-            border: 2px solid #ff00ff;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            position: relative;
-        }
-        .table-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom right,
-                rgba(255, 0, 255, 0.2) 0%,
-                rgba(0, 255, 255, 0.2) 100%
-            );
-            opacity: 0.1;
-            z-index: -1;
-        }
-        .table-container th, .table-container td {
-            padding: 0.75rem;
-            border-bottom: 1px solid #242442;
-        }
-        .table-container th {
-            background-color: #ff00ff;
-            color: #1a1a2e;
-            text-shadow: none;
-        }
-        .table-container tr:last-child td {
-            border-bottom: none;
-        }
-        .table-container td {
-            color: #ffffff;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        .table-container tr:nth-child(even) {
-            background-color: rgba(36, 36, 66, 0.2);
-        }
-        .table-container tr:hover td {
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: scale(1.02);
-        }
-
         .btn-retro {
             background-color: #4CAF50;
             color: white;
@@ -177,6 +82,7 @@
             text-shadow: 2px 2px #1c4b1d;
             box-shadow: 4px 4px 0px 0px #388E3C;
             transition: all 0.1s ease-in-out;
+            animation: pulsateButton 2s infinite ease-in-out alternate;
         }
 
         .btn-retro:hover {
@@ -188,87 +94,218 @@
             transform: translate(3px, 3px);
             box-shadow: 1px 1px 0px 0px #388E3C;
         }
+        
+        @keyframes pulsateButton {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.02);
+            }
+        }
+
+        .dashed-border {
+            border-bottom: 2px dashed #5d429a;
+        }
+
+        /* --- Style Layar Sambutan --- */
+        #welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1a1a2e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .welcome-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 2rem;
+            animation: glitch-text 1s linear infinite;
+        }
+
+        /* Glitch Effect Animation */
+        @keyframes glitch-text {
+            0% {
+                text-shadow: 0.05em 0 0 #00fffc, -0.05em -0.025em 0 #ff00ff, 0.025em 0.05em 0 #fffc00;
+            }
+            15% {
+                text-shadow: 0.05em 0 0 #00fffc, -0.05em -0.025em 0 #ff00ff, 0.025em 0.05em 0 #fffc00;
+            }
+            16% {
+                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.05em 0 #ff00ff, -0.05em 0.05em 0 #fffc00;
+            }
+            18% {
+                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.05em 0 #ff00ff, -0.05em 0.05em 0 #fffc00;
+            }
+            19% {
+                text-shadow: -0.025em -0.025em 0 #00fffc, -0.05em -0.025em 0 #ff00ff, -0.025em 0.05em 0 #fffc00;
+            }
+            21% {
+                text-shadow: -0.025em -0.025em 0 #00fffc, -0.05em -0.025em 0 #ff00ff, -0.025em 0.05em 0 #fffc00;
+            }
+            22% {
+                text-shadow: 0.05em 0 0 #00fffc, -0.05em -0.025em 0 #ff00ff, 0.025em 0.05em 0 #fffc00;
+            }
+            30% {
+                text-shadow: 0.05em 0 0 #00fffc, -0.05em -0.025em 0 #ff00ff, 0.025em 0.05em 0 #fffc00;
+            }
+            31% {
+                text-shadow: 0.05em 0 0 #00fffc, -0.05em -0.025em 0 #ff00ff, 0.025em 0.05em 0 #fffc00;
+            }
+            50% {
+                text-shadow: 0.05em 0 0 #00fffc, -0.05em -0.025em 0 #ff00ff, 0.025em 0.05em 0 #fffc00;
+            }
+            51% {
+                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.05em 0 #ff00ff, -0.05em 0.05em 0 #fffc00;
+            }
+            55% {
+                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.05em 0 #ff00ff, -0.05em 0.05em 0 #fffc00;
+            }
+            100% {
+                text-shadow: 0.05em 0 0 #00fffc, -0.05em -0.025em 0 #ff00ff, 0.025em 0.05em 0 #fffc00;
+            }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
     </style>
 </head>
 <body>
-    <div class="pixel-grid"></div>
-    <div class="stars" id="stars-container"></div>
-    <div class="sparkle-container" id="sparkle-container"></div>
-    <div class="text-center w-full max-w-4xl relative z-10 mx-auto p-4 flex flex-col items-center">
-        <h1 class="text-3xl md:text-4xl font-bold mb-4 text-white text-neon">
-            Program Referral By Zen
-        </h1>
-        <div class="text-left mb-8 w-full max-w-600">
-            <h2 class="text-2xl font-bold text-white mb-2 text-center">Skema Reward</h2>
-            <div class="table-container">
-                <table class="w-full text-center">
-                    <thead>
-                        <tr>
-                            <th>Status Akun</th>
-                            <th>Reward per Invite</th>
-                        </tr>
-                    </thead>
+    <!-- Audio untuk Musik Latar -->
+    <audio id="background-music" loop>
+        <source src="musik.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Layar Sambutan -->
+    <div id="welcome-screen" class="transition-opacity duration-1000 ease-in opacity-100">
+        <h1 class="welcome-title text-neon">Selamat datang di<br>Rent Linkedin By Zen</h1>
+        <button class="btn-retro px-8 py-4 text-lg font-bold" onclick="showMainContent()">LANJUTKAN</button>
+    </div>
+
+    <!-- Konten Utama (Awalnya tersembunyi) -->
+    <div id="main-content" style="display: none;">
+        <!-- Background Elements -->
+        <div class="pixel-grid"></div>
+
+        <div class="text-center w-full max-w-2xl relative z-10 mx-auto">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4 text-white text-neon">SYARAT & KETENTUAN <br> RENT BY ZEN</h1>
+            <p class="text-xs md:text-sm mb-6 px-4 py-2 border-2 border-yellow-400 font-bold text-yellow-400">
+                ⚠️ KEPUTUSAN FULL DITANGAN ANDA ⚠️
+            </p>
+
+            <!-- DETAIL REWARD SECTION -->
+            <div class="w-full bg-transparent px-4 py-2 mt-4">
+                <h2 class="text-xl md:text-2xl font-bold mb-2 text-white text-neon">DETAIL REWARD ⬇️</h2>
+                <div class="w-full bg-transparent px-4 py-2 mb-4">
+                    <table class="w-full text-left text-sm md:text-base border-collapse">
+                        <tbody>
+                            <tr>
+                                <td class="py-2 px-4 dashed-border">Save</td>
+                                <td class="py-2 px-4 dashed-border font-bold">$10</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-4 dashed-border">Unrestrict</td>
+                                <td class="py-2 px-4 dashed-border font-bold">$5</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-4">Restric</td>
+                                <td class="py-2 px-4 font-bold">TIDAK AKAN DIBAYAR</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="text-xs md:text-sm mt-4 mb-2 text-white italic">
+                    <span class="font-bold">Nb:</span> Rules bisa sewaktu waktu berubah, dan rules ini dibuat oleh admin sendiri. Admin tidak akan menerima Drama apapun di hari Payment ⚠️
+                </p>
+
+                <h3 class="text-base md:text-lg font-bold mt-6 text-white text-neon">PENJELASAN ⬇️</h3>
+                <div class="text-left text-sm md:text-base mt-2 space-y-2">
+                    <p>
+                        <span class="font-bold text-neon">Save</span> yaitu jika akun kamu aman sampai Hari Payment yaitu Rabu Malam tanpa terkena Batasan.
+                    </p>
+                    <p>
+                        <span class="font-bold text-neon">Unrestrict</span> yaitu jika akun kamu terkena batasan lalu bisa dibuka kembali.
+                    </p>
+                    <p>
+                        <span class="font-bold text-neon">Restric</span> yaitu akun anda terkena batasan.
+                    </p>
+                </div>
+            </div>
+
+            <!-- SYARAT & KETENTUAN SECTION -->
+            <div class="w-full bg-transparent px-4 py-2 mt-12">
+                <h2 class="text-xl md:text-2xl font-bold mb-4 text-white text-neon">SYARAT SEWA ⬇️</h2>
+                <table class="w-full text-left text-sm md:text-base border-collapse">
                     <tbody>
                         <tr>
-                            <td>Save/Unrestric</td>
-                            <td><span class="text-green-400 font-extrabold">1$</span></td>
+                            <td class="py-2 px-4 dashed-border">Usia Akun</td>
+                            <td class="py-2 px-4 dashed-border font-bold">DI ATAS 1 TAHUN (MIN. MEI 2024)</td>
                         </tr>
                         <tr>
-                            <td>Restric</td>
-                            <td><span class="text-red-400 font-extrabold">1$</span></td>
+                            <td class="py-2 px-4">Minimal Koneksi</td>
+                            <td class="py-2 px-4 font-bold">20 KONEKSI</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div class="mt-4 text-sm text-gray-300 space-y-2 text-center">
-                <p>
-                    <span class="text-green-400 font-bold">Save</span> ➡️ Referral Anda berhasil Unrestrict atau Aman sampai hari Payment
-                </p>
-                <p>
-                    <span class="text-red-400 font-bold">Restric</span> ➡️ Referral Anda terkena restric dan tidak bisa dibuka
-                </p>
+
+            <div class="text-xs md:text-sm mt-4 px-4 py-2 bg-transparent">
+                <p class="mb-2 text-white">NB: JIKA BELUM 20 KONEKSI HARAP GB KONEKSI DULU SESAMA MEMBER.</p>
+                <p class="font-bold text-white">LINK GRUP GB KONEKSI ⬇️</p>
             </div>
-        </div>
-        <div class="text-left w-full max-w-600">
-            <h2 class="text-2xl font-bold text-white mb-2 text-center">Cara Bergabung</h2>
-            <p class="text-center mb-4">
-                Untuk mendaftar sebagai pengundang, silakan minta kode referral Anda langsung ke admin.
-            </p>
-            <p class="text-center text-sm text-yellow-400 mb-4">
-                ⚠️ Khusus para pengundang, pembayaran bisa  disatuin (kalian yang gaji referral kalian sendiri) ⚠️
-            </p>
-            <a href="https://wa.me/62859106914815" target="_blank" class="flex justify-center">
-                <button class="btn-retro text-white px-6 py-2 rounded-lg text-md">
-                    Hubungi Admin
-                </button>
-            </a>
+
+            <div class="flex flex-col md:flex-row justify-center gap-4 mt-8">
+                <a href="https://chat.whatsapp.com/EPOhLpNxu1BKHm0gst46UR" target="_blank" class="w-full md:w-auto">
+                    <button class="btn-retro px-6 py-3 w-full">GB 1</button>
+                </a>
+                <a href="https://chat.whatsapp.com/Lcl2FNwZacCKdfrl7Grb1C?mode=ems_copy_t" target="_blank" class="w-full md:w-auto">
+                    <button class="btn-retro px-6 py-3 w-full">GB 2</button>
+                </a>
+                <a href="https://chat.whatsapp.com/DuVs2jl1lK9Dt6akRsx6GL" target="_blank" class="w-full md:w-auto">
+                    <button class="btn-retro px-6 py-3 w-full">GB 3</button>
+                </a>
+            </div>
         </div>
     </div>
 
+    <!-- Script untuk Mengontrol Audio dan Tampilan -->
     <script>
-        function createStar() {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.width = `${Math.random() * 2 + 1}px`;
-            star.style.height = star.style.width;
-            star.style.left = `${Math.random() * 100}vw`;
-            star.style.animationDuration = `${Math.random() * 5 + 5}s`;
-            document.getElementById('stars-container').appendChild(star);
-            setTimeout(() => star.remove(), 5000);
+        function showMainContent() {
+            const welcomeScreen = document.getElementById('welcome-screen');
+            const mainContent = document.getElementById('main-content');
+            const backgroundMusic = document.getElementById('background-music');
+            
+            // Memutar musik
+            backgroundMusic.play();
+            
+            // Menyembunyikan layar sambutan dengan animasi
+            welcomeScreen.style.animation = 'fadeOut 1s ease-in-out forwards';
+            
+            // Menunggu animasi fade-out selesai sebelum menampilkan konten utama
+            setTimeout(() => {
+                welcomeScreen.style.display = 'none';
+                mainContent.style.display = 'block';
+            }, 1000);
         }
-
-        function createSparkle() {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.left = `${Math.random() * 100}vw`;
-            sparkle.style.top = `${Math.random() * 100}vh`;
-            sparkle.style.animationDuration = `${Math.random() * 2 + 1}s`;
-            document.getElementById('sparkle-container').appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 3000);
-        }
-
-        setInterval(createStar, 200);
-        setInterval(createSparkle, 50);
     </script>
 </body>
 </html>
